@@ -6,19 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>about | IpromiseYou&#39;s Blog</title>
+  <title>vpn server搭建教程搬运--亲测有效 | IpromiseYou&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Where there is a will, there is a way!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://example.com/about/index.html">
+  <meta name="description" content="很早之前就想搭个自己的VPN服务器玩玩, 一直没有动力, 这两天偶然一个机会从朋友那搞了个VPN体验了一把, 艾玛真香~ 就想自己搭建1个私人使用的VPN服务器, 找了好些教程, 最后找到一个有效的, 记录一下, 方便以后复用！文章里也放了自己VPN服务器的信息, 需要的朋友可以直接拿去用！绝对无毒, 放心食用~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vpn server搭建教程搬运--亲测有效">
+<meta property="og:url" content="http://example.com/2021/02/12/vpn-server%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B%E6%90%AC%E8%BF%90/index.html">
 <meta property="og:site_name" content="IpromiseYou&#39;s Blog">
-<meta property="og:description" content="Where there is a will, there is a way!">
+<meta property="og:description" content="很早之前就想搭个自己的VPN服务器玩玩, 一直没有动力, 这两天偶然一个机会从朋友那搞了个VPN体验了一把, 艾玛真香~ 就想自己搭建1个私人使用的VPN服务器, 找了好些教程, 最后找到一个有效的, 记录一下, 方便以后复用！文章里也放了自己VPN服务器的信息, 需要的朋友可以直接拿去用！绝对无毒, 放心食用~">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-02-12T07:43:27.000Z">
-<meta property="article:modified_time" content="2021-02-12T07:48:54.864Z">
+<meta property="og:image" content="http://example.com/img/shadowsocks.png">
+<meta property="og:image" content="http://example.com/img/google.png">
+<meta property="og:image" content="http://example.com/img/gitdownload.png">
+<meta property="article:published_time" content="2021-02-12T07:53:10.000Z">
+<meta property="article:modified_time" content="2021-02-12T08:59:36.377Z">
 <meta property="article:author" content="pengmin">
+<meta property="article:tag" content="vpn">
+<meta property="article:tag" content="server">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/shadowsocks.png">
   
     <link rel="alternative" href="/atom.xml" title="IpromiseYou&#39;s Blog" type="application/atom+xml">
   
@@ -158,22 +164,22 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-vpn-server搭建教程搬运" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      about
+      vpn server搭建教程搬运--亲测有效
     </h1>
   
 
         
          
 
-<a href="/about/index.html" class="archive-article-date">
-  	<time datetime="2021-02-12T07:43:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-12</time>
+<a href="/2021/02/12/vpn-server%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B%E6%90%AC%E8%BF%90/" class="archive-article-date">
+  	<time datetime="2021-02-12T07:53:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-12</time>
 </a>
 
         
@@ -181,7 +187,34 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>Where there is a will, there is a way!</strong></p>
+        <p>很早之前就想搭个自己的VPN服务器玩玩, 一直没有动力, 这两天偶然一个机会从朋友那搞了个VPN体验了一把, 艾玛真香~ 就想自己搭建1个私人使用的VPN服务器, 找了好些教程, 最后找到一个有效的, 记录一下, 方便以后复用！文章里也放了自己VPN服务器的信息, 需要的朋友可以直接拿去用！绝对无毒, 放心食用~</p>
+<a id="more"></a>
+
+<p>先放上原文章链接：<a target="_blank" rel="noopener" href="https://www.idcbest.com/servernews/11004289.html">https://www.idcbest.com/servernews/11004289.html</a></p>
+<h5 id="Step1：准备1台海外的服务器"><a href="#Step1：准备1台海外的服务器" class="headerlink" title="Step1：准备1台海外的服务器"></a>Step1：准备1台海外的服务器</h5><p>本着经济实惠的原则得话, 当然是怎么便宜怎么来了, 当时我这台是在阿里云上买的(买的香港的服务器), 配置选的最低的还是花了56/月, 太贵了, 穷人表示用不起用不起！如果是要长期使用的话还是推荐买其他提供商的更经济的服务器！</p>
+<h5 id="Step2-安装Shadowsocks-Server"><a href="#Step2-安装Shadowsocks-Server" class="headerlink" title="Step2: 安装Shadowsocks Server"></a>Step2: 安装Shadowsocks Server</h5><p>a. 下载安装shadowsocks</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh</span><br></pre></td></tr></table></figure>
+<p>b. 赋予权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x shadowsocks-all.sh</span><br></pre></td></tr></table></figure>
+<p>c. log日志文件相关</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./shadowsocks-all.sh 2&gt;&amp;1| tee shadowsocks-all.log</span><br></pre></td></tr></table></figure>
+<p>d. 设置端口号,密码,加密方式等配置;</p>
+<p>最后看到如下信息, 就安装成功了~~</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">StartingShadowsocks success</span><br><span class="line"></span><br><span class="line">Congratulations, Shadowsocks-Python server install completed!</span><br><span class="line"></span><br><span class="line">YourServer IP        :  你的IP</span><br><span class="line"></span><br><span class="line">YourServerPort:  在第四步提示设置的端口号</span><br><span class="line"></span><br><span class="line">YourPassword:  在第四步提示设置的密码</span><br><span class="line"></span><br><span class="line">YourEncryptionMethod:  aes-256-cfb</span><br><span class="line"></span><br><span class="line">Your QR Code: (ForShadowsocksWindows, OSX, Androidand iOS clients)</span><br><span class="line"></span><br><span class="line"> ss://YWVzLTI1Ni1jZmI6emh1aTA4MTA0MTJaaaccuMjmmLjU1LjE5MTo4tdVg4</span><br><span class="line"></span><br><span class="line">Your QR Code has been saved as a PNG file path:</span><br><span class="line"></span><br><span class="line">/root/shadowsocks_python_qr.png</span><br><span class="line"></span><br><span class="line">Welcome to visit: https://teddysun.com/486.html</span><br><span class="line"></span><br><span class="line">Enjoy it!</span><br></pre></td></tr></table></figure>
+
+
+<h5 id="Step3-安装对应的客户端"><a href="#Step3-安装对应的客户端" class="headerlink" title="Step3: 安装对应的客户端"></a>Step3: 安装对应的客户端</h5><p>windows: <a target="_blank" rel="noopener" href="https://github.com/shadowsocks/shadowsocks-windows/releases">https://github.com/shadowsocks/shadowsocks-windows/releases</a></p>
+<p>mac: <a target="_blank" rel="noopener" href="https://github.com/yangfeicheung/Shadowsocks-X/releases">https://github.com/yangfeicheung/Shadowsocks-X/releases</a></p>
+<p>android: <a target="_blank" rel="noopener" href="https://github.com/shadowsocks/shadowsocks-android/releases">https://github.com/shadowsocks/shadowsocks-android/releases</a></p>
+<p>ios: App Store上下载ShadowLink，这个要用国外appid才可以下载哦。国内的搜不到的，因为shadowrocket收费的 (<strong>苹果手机测试的好像不太管用..</strong>)</p>
+<p>将服务器的地址, 端口号, 密码, 加密方式设置更新到shadowsocks客户端中, 就可以了！(下面是windows客户端的界面, 手机端的也差不多, 服务器信息是我自己搭的, 目前还可用, 后续有更新也会及时发布更新的！)</p>
+<p><img src="/img/shadowsocks.png" alt="image-20210212162629267"></p>
+<h5 id="Step4-Google一下吧"><a href="#Step4-Google一下吧" class="headerlink" title="Step4: Google一下吧~"></a>Step4: Google一下吧~</h5><p><a target="_blank" rel="noopener" href="https://www.google.com/">https://www.google.com</a></p>
+<p><img src="/img/google.png" alt="image-20210212161844554"></p>
+<p>能顺利google就大功告成啦~~ 都赶紧安排起来吧！</p>
+<p>其实, 翻墙的优点还是在于下载国外的资源吧, 看到这个拉取代码的速度还是挺欣慰的！</p>
+<p>再也不是kb的下载速度了.. 已经感动哭了..</p>
+<p><img src="/img/gitdownload.png" alt="image-20210212160310140"></p>
 
       
 
@@ -190,6 +223,21 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vpn</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">server</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -240,7 +288,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/about/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/02/12/vpn-server%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B%E6%90%AC%E8%BF%90/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -252,6 +300,25 @@
 </article>
 
   
+<nav id="article-nav">
+  
+    <a href="/2021/02/13/article3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          了解java多线程
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/02/09/article1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">博客内容说明</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -274,7 +341,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="" data-title="about" data-url="http://example.com/about/index.html"></div>
+	<div class="ds-thread" data-thread-key="vpn-server搭建教程搬运" data-title="vpn server搭建教程搬运--亲测有效" data-url="http://example.com/2021/02/12/vpn-server%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B%E6%90%AC%E8%BF%90/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -297,8 +364,8 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://example.com/about/index.html", 
-    sourceId: "",
+    url: "http://example.com/2021/02/12/vpn-server%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B%E6%90%AC%E8%BF%90/", 
+    sourceId: "vpn-server搭建教程搬运",
     productKey: "true",
     target: "cloud-tie-wrapper"
   };
@@ -307,7 +374,7 @@
   
 
   
-  <div id="SOHUCS" sid="" ></div> 
+  <div id="SOHUCS" sid="vpn-server搭建教程搬运" ></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
     window.changyan.api.config({
@@ -345,6 +412,7 @@
 
 
 
+
           </div>
         </div>
       </div>
@@ -373,7 +441,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
