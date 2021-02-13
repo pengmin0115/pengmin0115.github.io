@@ -11,12 +11,12 @@
   <meta name="description" content="Java多线程一直都是高频面试题以及并发场景下的常用知识点, 熟练掌握多线程就成了后端开发的1项必备技能.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="了解java多线程">
-<meta property="og:url" content="http://example.com/2021/02/09/article3/index.html">
+<meta property="og:url" content="http://example.com/2021/02/13/article3/index.html">
 <meta property="og:site_name" content="IpromiseYou&#39;s Blog">
 <meta property="og:description" content="Java多线程一直都是高频面试题以及并发场景下的常用知识点, 熟练掌握多线程就成了后端开发的1项必备技能.">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-02-09T10:28:40.000Z">
-<meta property="article:modified_time" content="2021-02-13T13:45:56.812Z">
+<meta property="article:published_time" content="2021-02-13T13:49:40.000Z">
+<meta property="article:modified_time" content="2021-02-13T13:50:04.160Z">
 <meta property="article:author" content="pengmin">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
@@ -173,8 +173,8 @@
         
          
 
-<a href="/2021/02/09/article3/" class="archive-article-date">
-  	<time datetime="2021-02-09T10:28:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-09</time>
+<a href="/2021/02/13/article3/" class="archive-article-date">
+  	<time datetime="2021-02-13T13:49:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-13</time>
 </a>
 
         
@@ -187,10 +187,8 @@
 
 
 
-<h5 id="1-线程和进程的区别与联系"><a href="#1-线程和进程的区别与联系" class="headerlink" title="(1) 线程和进程的区别与联系"></a>(1) 线程和进程的区别与联系</h5><p>待补充…</p>
-<h5 id="2-等待通知"><a href="#2-等待通知" class="headerlink" title="(2) 等待通知"></a>(2) 等待通知</h5><blockquote>
-<p> 注意：wiat/notify会释放线程持有的锁资源; (要保证持有的锁对象为同1个)</p>
-</blockquote>
+<h5 id="1-线程和进程的区别与联系"><a href="#1-线程和进程的区别与联系" class="headerlink" title="(1) 线程和进程的区别与联系"></a>(1) 线程和进程的区别与联系</h5><p>待补充…<br></p>
+<h5 id="2-等待通知"><a href="#2-等待通知" class="headerlink" title="(2) 等待通知"></a>(2) 等待通知</h5><p>注意：wiat/notify会释放线程持有的锁资源; (要保证持有的锁对象为同1个)</p>
 <p>如下示例代码中不仅用了同步锁, 并且在其中加入了条件判断, 只有当获取到锁, 并且满足条件的情况下才会执行业务代码; 使用notify()通知时, 通知的对象为在同1个锁对象上等待的线程;</p>
 <p>另外在使用wait/notify时, 方法调用对象都是锁对象;</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WaitNotify</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">static</span> Object lock = <span class="keyword">new</span> Object();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">WaitThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (lock) &#123;</span><br><span class="line">                <span class="keyword">while</span> (!flag) &#123;</span><br><span class="line">                    System.out.println(Thread.currentThread().getName() + <span class="string">&quot; flag is false,waiting.&quot;</span>);</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        lock.wait();</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">&quot; flag is true&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">NotifyThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (lock) &#123;</span><br><span class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">&quot; hold lock&quot;</span>);</span><br><span class="line">                lock.notify();</span><br><span class="line">                flag = <span class="keyword">true</span>;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    TimeUnit.SECONDS.sleep(<span class="number">5</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> Thread(<span class="keyword">new</span> WaitThread(), <span class="string">&quot;wait&quot;</span>).start();</span><br><span class="line">        TimeUnit.SECONDS.sleep(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">new</span> Thread(<span class="keyword">new</span> NotifyThread(), <span class="string">&quot;notify&quot;</span>).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -202,10 +200,7 @@
 <p>  <strong>c. 在调用sleep()方法的过程中, 线程不会释放锁; 而当调用wait()方法时, 线程会释放锁;</strong></p>
 <h5 id="4-原子类保证原子性操作的原理"><a href="#4-原子类保证原子性操作的原理" class="headerlink" title="(4) 原子类保证原子性操作的原理"></a>(4) 原子类保证原子性操作的原理</h5><p>a. 原子类中的方法进行操作时都是使用的CAS进行操作;</p>
 <p>b. 最终的CAS原子性是通过底层系统CPU来实现; (底层指令加入lock前缀)</p>
-<h5 id="5-synchronized-amp-lock如何选用"><a href="#5-synchronized-amp-lock如何选用" class="headerlink" title="(5) synchronized &amp; lock如何选用"></a>(5) synchronized &amp; lock如何选用</h5><blockquote>
-<p> synchronized是java语言层面上的锁功能实现, 称之为内置锁(隐式锁), 使用过程中只能先获取, 再释放, 不能中断和超时获取; </p>
-<p>lock称之为显示锁, 提供了3个常见方法: lock(), unLock(), tryLock( ).</p>
-</blockquote>
+<h5 id="5-synchronized-amp-lock如何选用"><a href="#5-synchronized-amp-lock如何选用" class="headerlink" title="(5) synchronized &amp; lock如何选用"></a>(5) synchronized &amp; lock如何选用</h5><p>synchronized是java语言层面上的锁功能实现, 称之为内置锁(隐式锁), 使用过程中只能先获取, 再释放, 不能中断和超时获取;<br>lock称之为显示锁, 提供了3个常见方法: lock(), unLock(), tryLock( ).</p>
 <p><strong>结论：</strong></p>
 <p>a. 在锁的使用过程中, 不考虑尝试获取锁和锁中断特性的话, 选用synchronized, 因为JAVA针对synchronized做了锁的升级优化;</p>
 <p>b. 在锁很多时, 若无特殊要求, 使用synchronized. 因为其比lock消耗更少的内存资源, lock是一个接口, 在使用lock时需要获取对象实例后才能进行操作;</p>
@@ -278,7 +273,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/02/09/article3/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/02/13/article3/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -292,18 +287,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/02/09/article1/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          博客内容说明
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/02/09/article2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">hexo博客框架使用</div>
+    <a href="/2021/02/12/vpn-server%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B%E6%90%AC%E8%BF%90/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vpn server搭建教程搬运--亲测有效</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -331,7 +317,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="article3" data-title="了解java多线程" data-url="http://example.com/2021/02/09/article3/"></div>
+	<div class="ds-thread" data-thread-key="article3" data-title="了解java多线程" data-url="http://example.com/2021/02/13/article3/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -354,7 +340,7 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://example.com/2021/02/09/article3/", 
+    url: "http://example.com/2021/02/13/article3/", 
     sourceId: "article3",
     productKey: "true",
     target: "cloud-tie-wrapper"
