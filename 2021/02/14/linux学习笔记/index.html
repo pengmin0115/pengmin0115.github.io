@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>hexo博客框架使用 | IpromiseYou&#39;s Blog</title>
+  <title>linux学习笔记 | IpromiseYou&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="持续记录更新在使用hexo博客框架过程中, 用到的脚本以及常用配置修改等.">
-<meta property="og:type" content="article">
-<meta property="og:title" content="hexo博客框架使用">
-<meta property="og:url" content="http://example.com/2021/02/09/article2/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="linux学习笔记">
+<meta property="og:url" content="http://example.com/2021/02/14/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="IpromiseYou&#39;s Blog">
-<meta property="og:description" content="持续记录更新在使用hexo博客框架过程中, 用到的脚本以及常用配置修改等.">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-02-09T08:50:13.000Z">
-<meta property="article:modified_time" content="2021-02-12T08:56:08.104Z">
+<meta property="og:image" content="http://example.com/img/linux.jpg">
+<meta property="article:published_time" content="2021-02-14T05:59:52.000Z">
+<meta property="article:modified_time" content="2021-02-14T06:20:54.205Z">
 <meta property="article:author" content="pengmin">
-<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/linux.jpg">
   
     <link rel="alternative" href="/atom.xml" title="IpromiseYou&#39;s Blog" type="application/atom+xml">
   
@@ -159,22 +159,22 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-article2" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-linux学习笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      hexo博客框架使用
+      linux学习笔记
     </h1>
   
 
         
          
 
-<a href="/2021/02/09/article2/" class="archive-article-date">
-  	<time datetime="2021-02-09T08:50:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-09</time>
+<a href="/2021/02/14/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+  	<time datetime="2021-02-14T05:59:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-14</time>
 </a>
 
         
@@ -182,14 +182,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>持续记录更新在使用hexo博客框架过程中, 用到的脚本以及常用配置修改等.</p>
+        <p><img src="/img/linux.jpg" alt="linux"></p>
 <a id="more"></a>
 
-<h4 id="1-红心特效"><a href="#1-红心特效" class="headerlink" title="1. 红心特效"></a>1. 红心特效</h4><p>​    <strong>Step1: /theme/…/source/文件目录下加入如下脚本; (love.js)</strong> </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params">e,t,a</span>)</span>&#123;<span class="function"><span class="keyword">function</span> <span class="title">r</span>(<span class="params"></span>)</span>&#123;<span class="keyword">for</span>(<span class="keyword">var</span> e=<span class="number">0</span>;e&lt;s.length;e++)s[e].alpha&lt;=<span class="number">0</span>?(t.body.removeChild(s[e].el),s.splice(e,<span class="number">1</span>)):(s[e].y--,s[e].scale+=<span class="number">.004</span>,s[e].alpha-=<span class="number">.013</span>,s[e].el.style.cssText=<span class="string">&quot;left:&quot;</span>+s[e].x+<span class="string">&quot;px;top:&quot;</span>+s[e].y+<span class="string">&quot;px;opacity:&quot;</span>+s[e].alpha+<span class="string">&quot;;transform:scale(&quot;</span>+s[e].scale+<span class="string">&quot;,&quot;</span>+s[e].scale+<span class="string">&quot;) rotate(45deg);background:&quot;</span>+s[e].color+<span class="string">&quot;;z-index:99999&quot;</span>);requestAnimationFrame(r)&#125;<span class="function"><span class="keyword">function</span> <span class="title">n</span>(<span class="params"></span>)</span>&#123;<span class="keyword">var</span> t=<span class="string">&quot;function&quot;</span>==<span class="keyword">typeof</span> e.onclick&amp;&amp;e.onclick;e.onclick=<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;t&amp;&amp;t(),o(e)&#125;&#125;<span class="function"><span class="keyword">function</span> <span class="title">o</span>(<span class="params">e</span>)</span>&#123;<span class="keyword">var</span> a=t.createElement(<span class="string">&quot;div&quot;</span>);a.className=<span class="string">&quot;heart&quot;</span>,s.push(&#123;<span class="attr">el</span>:a,<span class="attr">x</span>:e.clientX-<span class="number">5</span>,<span class="attr">y</span>:e.clientY-<span class="number">5</span>,<span class="attr">scale</span>:<span class="number">1</span>,<span class="attr">alpha</span>:<span class="number">1</span>,<span class="attr">color</span>:c()&#125;),t.body.appendChild(a)&#125;<span class="function"><span class="keyword">function</span> <span class="title">i</span>(<span class="params">e</span>)</span>&#123;<span class="keyword">var</span> a=t.createElement(<span class="string">&quot;style&quot;</span>);a.type=<span class="string">&quot;text/css&quot;</span>;<span class="keyword">try</span>&#123;a.appendChild(t.createTextNode(e))&#125;<span class="keyword">catch</span>(t)&#123;a.styleSheet.cssText=e&#125;t.getElementsByTagName(<span class="string">&quot;head&quot;</span>)[<span class="number">0</span>].appendChild(a)&#125;<span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>)</span>&#123;<span class="keyword">return</span><span class="string">&quot;rgb(&quot;</span>+~~(<span class="number">255</span>*<span class="built_in">Math</span>.random())+<span class="string">&quot;,&quot;</span>+~~(<span class="number">255</span>*<span class="built_in">Math</span>.random())+<span class="string">&quot;,&quot;</span>+~~(<span class="number">255</span>*<span class="built_in">Math</span>.random())+<span class="string">&quot;)&quot;</span>&#125;<span class="keyword">var</span> s=[];e.requestAnimationFrame=e.requestAnimationFrame||e.webkitRequestAnimationFrame||e.mozRequestAnimationFrame||e.oRequestAnimationFrame||e.msRequestAnimationFrame||<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;<span class="built_in">setTimeout</span>(e,<span class="number">1e3</span>/<span class="number">60</span>)&#125;,i(<span class="string">&quot;.heart&#123;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);&#125;.heart:after,.heart:before&#123;content: &#x27;&#x27;;width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;&#125;.heart:after&#123;top: -5px;&#125;.heart:before&#123;left: -5px;&#125;&quot;</span>),n(),r()&#125;(<span class="built_in">window</span>,<span class="built_in">document</span>);</span><br></pre></td></tr></table></figure>
-<p>​    <strong>Step2: theme/…/layout/_partial/footer.ejs文件后加入如下配置;</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span> src=<span class="string">&quot;/love.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=0  height=0 src="//music.163.com/outchain/player?type=2&id=427606780&auto=1&height=66"></iframe>
+<h5 id="创建虚拟机时常见的网络链接的3种模式"><a href="#创建虚拟机时常见的网络链接的3种模式" class="headerlink" title="创建虚拟机时常见的网络链接的3种模式"></a>创建虚拟机时常见的网络链接的3种模式</h5><p>场景：若干主机在相同局域网中, 且处于相同网段下(如192.168.1.*)</p>
+<ol>
+<li>桥接模式：虚拟系统的网段需要设置成和主机相同才可与外部的主机进行通讯, 虚拟系统可以和外部系统通讯, 但是容易造成IP冲突; (双向通讯)</li>
+<li>NAT模式：网络地址转换模式, 不需要设置成和主机相同网段, 会自动生成新的主机IP与其配对; 虚拟系统可以和外部系统进行通讯, 不造成IP冲突; (只可单向通讯)</li>
+<li>主机模式：独立的系统; </li>
+</ol>
 
       
 
@@ -203,7 +204,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
         		</li>
       		
 		</ul>
@@ -259,7 +260,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/02/09/article2/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/02/14/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -273,15 +274,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/02/09/article1/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          博客内容说明
-        
-      </div>
-    </a>
   
+    <a href="/2021/02/13/%E6%89%93%E5%B7%A5%E4%BA%BA%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">打工人的自我修养</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -307,7 +304,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="article2" data-title="hexo博客框架使用" data-url="http://example.com/2021/02/09/article2/"></div>
+	<div class="ds-thread" data-thread-key="linux学习笔记" data-title="linux学习笔记" data-url="http://example.com/2021/02/14/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -330,8 +327,8 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://example.com/2021/02/09/article2/", 
-    sourceId: "article2",
+    url: "http://example.com/2021/02/14/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/", 
+    sourceId: "linux学习笔记",
     productKey: "true",
     target: "cloud-tie-wrapper"
   };
@@ -340,7 +337,7 @@
   
 
   
-  <div id="SOHUCS" sid="article2" ></div> 
+  <div id="SOHUCS" sid="linux学习笔记" ></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
     window.changyan.api.config({
