@@ -16,7 +16,7 @@
 <meta property="og:image" content="http://example.com/img/linux.jpg">
 <meta property="og:image" content="http://example.com/img/linux_content.png">
 <meta property="article:published_time" content="2021-02-14T05:59:52.000Z">
-<meta property="article:modified_time" content="2021-02-14T06:54:25.376Z">
+<meta property="article:modified_time" content="2021-02-14T07:36:08.901Z">
 <meta property="article:author" content="pengmin">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
@@ -186,7 +186,7 @@
         <p><img src="/img/linux.jpg" alt="linux"></p>
 <a id="more"></a>
 
-<h5 id="创建虚拟机时常见的网络链接的3种模式"><a href="#创建虚拟机时常见的网络链接的3种模式" class="headerlink" title="创建虚拟机时常见的网络链接的3种模式"></a>创建虚拟机时常见的网络链接的3种模式</h5><p>场景：若干主机在相同局域网中, 且处于相同网段下(如192.168.1.*)</p>
+<h5 id="创建虚拟机时常见的网络链接的3种模式"><a href="#创建虚拟机时常见的网络链接的3种模式" class="headerlink" title="创建虚拟机时常见的网络链接的3种模式"></a>创建虚拟机时常见的网络链接的3种模式</h5><p>场景：若干主机在相同局域网中, 且处于相同网段下(如<code>192.168.1.*</code>)</p>
 <ol>
 <li>桥接模式：虚拟系统的网段需要设置成和主机相同才可与外部的主机进行通讯, 虚拟系统可以和外部系统通讯, 但是容易造成IP冲突; (双向通讯)</li>
 <li>NAT模式：网络地址转换模式, 不需要设置成和主机相同网段, 会自动生成新的主机IP与其配对; 虚拟系统可以和外部系统进行通讯, 不造成IP冲突; (只可单向通讯)</li>
@@ -194,28 +194,86 @@
 </ol>
 <h5 id="linux目录结构"><a href="#linux目录结构" class="headerlink" title="linux目录结构"></a>linux目录结构</h5><p><img src="/img/linux_content.png" alt="linux_content"></p>
 <ul>
-<li>/bin: binary的缩写, 该目录下存放常用的命令; </li>
-<li>/sbin: s-super user, 存放的是系统管理员使用的系统管理程序; </li>
-<li>/home: 存放普通用户的主目录, 每个用户都有自己的目录;</li>
-<li>/root: 系统管理员目录; </li>
-<li>/lib: 系统开机所需要的最基本的动态链接共享库, 类似于windows中的DLL文件;</li>
-<li>/lost+found: 一般情况下是空的, 系统非法关机后, 会存放文件;</li>
-<li>/etc: 所有的系统管理所需的配置文件和子目录;</li>
-<li>/usr: 用户的应用程序和文件存放位置;</li>
-<li>/boot: 存放启动linux时使用的核心文件;</li>
-<li>/proc: 虚拟目录, 是系统内存的映射, 访问该系统来获取系统的信息;</li>
-<li>/srv: service, 系统服务启动需要提取的数据;</li>
-<li>/sys: 系统文件系统;</li>
-<li>/tmp: 临时文件目录;</li>
-<li>/dev: 设备管理器, 将所有硬件以文件形式存储起来;</li>
-<li>/media: 系统自动识别设备, 如U盘,光驱等, 识别后自动挂载到该目录下;</li>
-<li>/mnt: 让用户临时挂载别的文件系统的;(如共享文件)</li>
-<li>/opt: 给主机额外<strong>安装软件</strong>的目录; 如安装数据库即可放在该目录下;</li>
-<li>/run: linux系统运行时所需要的文件目录;</li>
-<li>/var: 存放不断扩充的东西, 如日志等;</li>
-<li>/usr/local: 给主机额外安装软件的目录, 一般是通过编译源码的方式安装的程序;</li>
-<li>/selinux: security-enhance linux, 安全子系统, 可控制程序只能访问特定的文件; </li>
+<li><p><code>/bin</code>: binary的缩写, 该目录下存放常用的命令; </p>
+</li>
+<li><p><code>/sbin</code>: s-super user, 存放的是系统管理员使用的系统管理程序; </p>
+</li>
+<li><p><code>/home</code>: 存放普通用户的主目录, 每个用户都有自己的目录;</p>
+</li>
+<li><p><code>/root</code>: 系统管理员目录; </p>
+</li>
+<li><p><code>/lib</code>: 系统开机所需要的最基本的动态链接共享库, 类似于windows中的DLL文件;</p>
+</li>
+<li><p><code>/lost+found</code>: 一般情况下是空的, 系统非法关机后, 会存放文件;</p>
+</li>
+<li><p><code>/etc</code>: 所有的系统管理所需的配置文件和子目录;</p>
+</li>
+<li><p><code>/usr</code>: 用户的应用程序和文件存放位置;</p>
+</li>
+<li><p><code>/boot</code>: 存放启动linux时使用的核心文件;</p>
+</li>
+<li><p><code>/proc</code>: 虚拟目录, 是系统内存的映射, 访问该系统来获取系统的信息;</p>
+</li>
+<li><p><code>/srv</code>: service, 系统服务启动需要提取的数据;</p>
+</li>
+<li><p><code>/sys</code>: 系统文件系统;</p>
+</li>
+<li><p><code>/tmp</code>: 临时文件目录;</p>
+</li>
+<li><p><code>/dev</code>: 设备管理器, 将所有硬件以文件形式存储起来;</p>
+</li>
+<li><p><code>/media</code>: 系统自动识别设备, 如U盘,光驱等, 识别后自动挂载到该目录下;</p>
+</li>
+<li><p><code>/mnt</code>: 让用户临时挂载别的文件系统的;(如共享文件)</p>
+</li>
+<li><p><code>/opt</code>: 给主机额外<strong>安装软件</strong>的目录; 如安装数据库即可放在该目录下;</p>
+</li>
+<li><p><code>/run</code>: linux系统运行时所需要的文件目录;</p>
+</li>
+<li><p><code>/var</code>: 存放不断扩充的东西, 如日志等;</p>
+</li>
+<li><p><code>/usr/local</code>: 给主机额外安装软件的目录, 一般是通过编译源码的方式安装的程序;</p>
+</li>
 </ul>
+<h5 id="linux的关机以及用户管理"><a href="#linux的关机以及用户管理" class="headerlink" title="linux的关机以及用户管理"></a>linux的关机以及用户管理</h5><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>shutdown -h now</code></td>
+<td>立刻关机</td>
+</tr>
+<tr>
+<td><code>shutdown -h 1</code></td>
+<td>1分钟后关机</td>
+</tr>
+<tr>
+<td><code>shutdown -r now</code></td>
+<td>马上重启计算机</td>
+</tr>
+<tr>
+<td><code>halt</code></td>
+<td>关机</td>
+</tr>
+<tr>
+<td><code>reboot</code></td>
+<td>重启</td>
+</tr>
+<tr>
+<td><code>sync</code></td>
+<td>数据同步</td>
+</tr>
+</tbody></table>
+<p>【注意】重启和关机都会先执行<code>sync</code>命令, 将内存中的数据写入磁盘中; 建议关机和重启之前手动执行<code>sync</code>！</p>
+<h5 id="vim使用"><a href="#vim使用" class="headerlink" title="vim使用"></a>vim使用</h5><p>yy: 拷贝当前行; 5yy: 拷贝当前行向下5行, 并粘贴(输入p);</p>
+<p>dd: 删除当前行; 5dd: 删除当前行向下的5行;</p>
+<p>查找: ‘/+查找内容’ 进入查找模式, 输入n查找下一个;</p>
+<p>设置行号: 命令行模式下: set nu; 取消行号: set nonu;</p>
+<p>撤销操作: 一般模式下输入u;</p>
+<p>快速定位到具体的行: 一般模式下输入行号+ ‘shift+g’;</p>
 
       
 
