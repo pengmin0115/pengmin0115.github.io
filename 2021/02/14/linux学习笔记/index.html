@@ -14,8 +14,9 @@
 <meta property="og:site_name" content="IpromiseYou&#39;s Blog">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/linux.jpg">
+<meta property="og:image" content="http://example.com/img/linux_content.png">
 <meta property="article:published_time" content="2021-02-14T05:59:52.000Z">
-<meta property="article:modified_time" content="2021-02-14T06:20:54.205Z">
+<meta property="article:modified_time" content="2021-02-14T06:54:25.376Z">
 <meta property="article:author" content="pengmin">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
@@ -191,6 +192,30 @@
 <li>NAT模式：网络地址转换模式, 不需要设置成和主机相同网段, 会自动生成新的主机IP与其配对; 虚拟系统可以和外部系统进行通讯, 不造成IP冲突; (只可单向通讯)</li>
 <li>主机模式：独立的系统; </li>
 </ol>
+<h5 id="linux目录结构"><a href="#linux目录结构" class="headerlink" title="linux目录结构"></a>linux目录结构</h5><p><img src="/img/linux_content.png" alt="linux_content"></p>
+<ul>
+<li>/bin: binary的缩写, 该目录下存放常用的命令; </li>
+<li>/sbin: s-super user, 存放的是系统管理员使用的系统管理程序; </li>
+<li>/home: 存放普通用户的主目录, 每个用户都有自己的目录;</li>
+<li>/root: 系统管理员目录; </li>
+<li>/lib: 系统开机所需要的最基本的动态链接共享库, 类似于windows中的DLL文件;</li>
+<li>/lost+found: 一般情况下是空的, 系统非法关机后, 会存放文件;</li>
+<li>/etc: 所有的系统管理所需的配置文件和子目录;</li>
+<li>/usr: 用户的应用程序和文件存放位置;</li>
+<li>/boot: 存放启动linux时使用的核心文件;</li>
+<li>/proc: 虚拟目录, 是系统内存的映射, 访问该系统来获取系统的信息;</li>
+<li>/srv: service, 系统服务启动需要提取的数据;</li>
+<li>/sys: 系统文件系统;</li>
+<li>/tmp: 临时文件目录;</li>
+<li>/dev: 设备管理器, 将所有硬件以文件形式存储起来;</li>
+<li>/media: 系统自动识别设备, 如U盘,光驱等, 识别后自动挂载到该目录下;</li>
+<li>/mnt: 让用户临时挂载别的文件系统的;(如共享文件)</li>
+<li>/opt: 给主机额外<strong>安装软件</strong>的目录; 如安装数据库即可放在该目录下;</li>
+<li>/run: linux系统运行时所需要的文件目录;</li>
+<li>/var: 存放不断扩充的东西, 如日志等;</li>
+<li>/usr/local: 给主机额外安装软件的目录, 一般是通过编译源码的方式安装的程序;</li>
+<li>/selinux: security-enhance linux, 安全子系统, 可控制程序只能访问特定的文件; </li>
+</ul>
 
       
 
