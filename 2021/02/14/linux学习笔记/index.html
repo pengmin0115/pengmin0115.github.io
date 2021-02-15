@@ -16,7 +16,7 @@
 <meta property="og:image" content="http://example.com/img/linux.jpg">
 <meta property="og:image" content="http://example.com/img/linux_content.png">
 <meta property="article:published_time" content="2021-02-14T05:59:52.000Z">
-<meta property="article:modified_time" content="2021-02-14T07:36:08.901Z">
+<meta property="article:modified_time" content="2021-02-14T12:29:10.489Z">
 <meta property="article:author" content="pengmin">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
@@ -235,7 +235,7 @@
 <li><p><code>/usr/local</code>: 给主机额外安装软件的目录, 一般是通过编译源码的方式安装的程序;</p>
 </li>
 </ul>
-<h5 id="linux的关机以及用户管理"><a href="#linux的关机以及用户管理" class="headerlink" title="linux的关机以及用户管理"></a>linux的关机以及用户管理</h5><table>
+<h5 id="linux的关机-重启以及用户管理"><a href="#linux的关机-重启以及用户管理" class="headerlink" title="linux的关机/重启以及用户管理"></a>linux的关机/重启以及用户管理</h5><h6 id="关机及重启"><a href="#关机及重启" class="headerlink" title="关机及重启"></a>关机及重启</h6><table>
 <thead>
 <tr>
 <th>命令</th>
@@ -268,13 +268,23 @@
 </tr>
 </tbody></table>
 <p>【注意】重启和关机都会先执行<code>sync</code>命令, 将内存中的数据写入磁盘中; 建议关机和重启之前手动执行<code>sync</code>！</p>
+<h6 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h6><ul>
+<li><p>添加用户: <code>useradd 用户名</code>;  (或者<code>useradd -d 指定目录 用户名</code>)  默认目录是/home/用户名;</p>
+</li>
+<li><p>指定/修改密码: <code>passwd 用户名</code>;</p>
+</li>
+<li><p>删除用户: <code>userdel 用户名</code>  (会保存home目录, 要删除home目录<code>userdel -r 用户名</code>) ;</p>
+</li>
+<li><p>更换用户: <code>su - 用户名</code></p>
+</li>
+</ul>
 <h5 id="vim使用"><a href="#vim使用" class="headerlink" title="vim使用"></a>vim使用</h5><p>yy: 拷贝当前行; 5yy: 拷贝当前行向下5行, 并粘贴(输入p);</p>
 <p>dd: 删除当前行; 5dd: 删除当前行向下的5行;</p>
 <p>查找: ‘/+查找内容’ 进入查找模式, 输入n查找下一个;</p>
 <p>设置行号: 命令行模式下: set nu; 取消行号: set nonu;</p>
 <p>撤销操作: 一般模式下输入u;</p>
 <p>快速定位到具体的行: 一般模式下输入行号+ ‘shift+g’;</p>
-
+<h5 id="文件权限管理"><a href="#文件权限管理" class="headerlink" title="文件权限管理"></a>文件权限管理</h5>
       
 
       
@@ -628,7 +638,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">Where there is a will,&lt;br&gt;there is a way!</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">人生当苦无妨 &lt;br&gt;良人当归即好.</div>
   	  	
     	</section>
     
