@@ -14,9 +14,11 @@
 <meta property="og:site_name" content="IpromiseYou&#39;s Blog">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/github.png">
+<meta property="og:image" content="http://example.com/img/idea_git1.png">
+<meta property="og:image" content="http://example.com/img/idea_git2.png">
 <meta property="og:image" content="http://example.com/img/git_diff.png">
 <meta property="article:published_time" content="2021-02-22T15:04:41.000Z">
-<meta property="article:modified_time" content="2021-02-22T16:26:50.987Z">
+<meta property="article:modified_time" content="2021-02-23T01:59:16.414Z">
 <meta property="article:author" content="pengmin">
 <meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
@@ -196,9 +198,13 @@
 <h5 id="3-版本管理"><a href="#3-版本管理" class="headerlink" title="3. 版本管理"></a>3. 版本管理</h5><p>查看工作区状态：<code>git status</code>;</p>
 <p>查看差异: <code>git diff</code>;</p>
 <p><strong>(1) 版本回退</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看版本提交的历史记录;</span></span><br><span class="line">git <span class="built_in">log</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加入参数--pretty=oneline,控制1行显示;</span></span><br><span class="line">git <span class="built_in">log</span> --pretty=oneline;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换版本;</span></span><br><span class="line">git reset --hard 版本号;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看历史命令;</span></span><br><span class="line">git reflog;</span><br></pre></td></tr></table></figure>
-
-
+<p><strong>方法1：bash命令行</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看版本提交的历史记录;</span></span><br><span class="line">git <span class="built_in">log</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加入参数--pretty=oneline,控制1行显示;</span></span><br><span class="line">git <span class="built_in">log</span> --pretty=oneline;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换版本;</span></span><br><span class="line">git reset --hard 版本号;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 强制推送代码</span></span><br><span class="line">git push -f</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看历史命令;</span></span><br><span class="line">git reflog;</span><br></pre></td></tr></table></figure>
+<p><strong>方法2：idea集成操作</strong></p>
+<p>先将版本回退到需要的版本状态; （此时提交代码会报错）</p>
+<p><img src="/img/idea_git1.png" alt="alt 回退版本"></p>
+<p>再进行Reset Head操作; </p>
+<p><img src="/img/idea_git2.png" alt="alt reset"></p>
 <p><strong>(2) 文件修改</strong></p>
 <p>重点：所有的文件都要先进行添加, 然后再提交到本地仓库！</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># commit只会提交已经add的文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看当前的文件和本地仓库中的差异;</span></span><br><span class="line">git diff head -- 文件名;</span><br></pre></td></tr></table></figure>
