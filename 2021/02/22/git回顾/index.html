@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://example.com/img/idea_git2.png">
 <meta property="og:image" content="http://example.com/img/git_diff.png">
 <meta property="article:published_time" content="2021-02-22T15:04:41.000Z">
-<meta property="article:modified_time" content="2021-02-23T01:59:16.414Z">
+<meta property="article:modified_time" content="2021-02-23T02:11:12.649Z">
 <meta property="article:author" content="pengmin">
 <meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
@@ -205,6 +205,9 @@
 <p><img src="/img/idea_git1.png" alt="alt 回退版本"></p>
 <p>再进行Reset Head操作; </p>
 <p><img src="/img/idea_git2.png" alt="alt reset"></p>
+<p><strong>方法3：<code>git reveret</code> 重做对应的版本</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># v1, v2, v3, v4; 重做V3版本(删除V3提交修改内容),同时还能保留V4版本提交的内容;</span></span><br><span class="line">git revert -n v3;</span><br></pre></td></tr></table></figure>
+<p>【注意】重做之后, 可能会出现冲突, 要手动解决冲突, 并add+commit. </p>
 <p><strong>(2) 文件修改</strong></p>
 <p>重点：所有的文件都要先进行添加, 然后再提交到本地仓库！</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># commit只会提交已经add的文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看当前的文件和本地仓库中的差异;</span></span><br><span class="line">git diff head -- 文件名;</span><br></pre></td></tr></table></figure>
