@@ -11,15 +11,17 @@
   <meta name="description" content="记录学习,工作过程中遇到的知识盲区, 查漏补缺.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="打工人的自我修养">
-<meta property="og:url" content="http://example.com/2021/02/13/%E6%89%93%E5%B7%A5%E4%BA%BA%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/index.html">
+<meta property="og:url" content="http://example.com/2021/02/24/%E6%89%93%E5%B7%A5%E4%BA%BA%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/index.html">
 <meta property="og:site_name" content="IpromiseYou&#39;s Blog">
 <meta property="og:description" content="记录学习,工作过程中遇到的知识盲区, 查漏补缺.">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-02-13T13:53:49.000Z">
-<meta property="article:modified_time" content="2021-02-13T13:56:55.784Z">
+<meta property="og:image" content="http://example.com/img/diagram/png">
+<meta property="article:published_time" content="2021-02-24T14:37:49.000Z">
+<meta property="article:modified_time" content="2021-02-24T14:49:53.783Z">
 <meta property="article:author" content="pengmin">
 <meta property="article:tag" content="tips">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/diagram/png">
   
     <link rel="alternative" href="/atom.xml" title="IpromiseYou&#39;s Blog" type="application/atom+xml">
   
@@ -173,8 +175,8 @@
         
          
 
-<a href="/2021/02/13/%E6%89%93%E5%B7%A5%E4%BA%BA%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/" class="archive-article-date">
-  	<time datetime="2021-02-13T13:53:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-13</time>
+<a href="/2021/02/24/%E6%89%93%E5%B7%A5%E4%BA%BA%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/" class="archive-article-date">
+  	<time datetime="2021-02-24T14:37:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-24</time>
 </a>
 
         
@@ -186,6 +188,49 @@
 <a id="more"></a>
 
 <h5 id="1-for-和-while-true"><a href="#1-for-和-while-true" class="headerlink" title="(1) for( ; ;) 和 while(true)"></a>(1) for( ; ;) 和 while(true)</h5><p>两者都是表示死循环, 但是在底层指令级别上for循环更简洁, 不占用寄存器, 没有判断跳转. 比while循环更好;</p>
+<h5 id="2-Stream函数式编程"><a href="#2-Stream函数式编程" class="headerlink" title="(2) Stream函数式编程"></a>(2) Stream函数式编程</h5><p><img src="/img/diagram/png" alt="alt Stream"></p>
+<p><strong>Stream的特点</strong></p>
+<ul>
+<li>无存储：Stream不是数据结构, 是数据源的1种视图；</li>
+<li>懒执行：Stream上的操作不会立即执行, 只有需要的时候才会执行;</li>
+<li>可消费性：只能消费1次，遍历后即失效；</li>
+</ul>
+<p><strong>Stream的操作：</strong></p>
+<ul>
+<li><p>中间操作(Lazy-excute)：生成标记了该操作的Stream, 不会立即执行;</p>
+</li>
+<li><p>结束操作：结束操作会触发实际计算, 计算完成Stream失效;</p>
+</li>
+</ul>
+<p>中间操作：<code>concat()</code>, <code>distinct()</code>, <code>filter()</code>, <code>flatMap()</code>, <code>limit()</code>, <code>map()</code>, <code>peek()</code>, <code>skip()</code>, <code>sorted()</code>, <code>parallel()</code>, <code>sequential()</code>, <code>unordered()</code>…</p>
+<p>结束：<code>allMatch()</code>, <code>anyMatch()</code>, <code>noneMatch()</code>, <code>collect()</code>, <code>count()</code>, <code>findAny()</code>, <code>findFirst()</code>, <code>forEach()</code>, <code>forEachOrdered()</code>, <code>max()</code>, <code>min()</code>, <code>reduce()</code>, <code>toArray()</code> …</p>
+<p><strong>方法说明</strong></p>
+<ul>
+<li>forEach()：对Stream中的元素进行遍历;</li>
+<li>filter()：条件过滤;</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  获取ID为1的员工;</span></span><br><span class="line">employeeList.stream().filter(employee -&gt; employee.getId().equals(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+<ul>
+<li>sorted() ：排序, 参数为比较器<code>comparator()</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 按照员工年龄升序排列;</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">employeeList.stream().sorted((employee1, employee2) -&gt; </span><br><span class="line">                             employee1.getAge() - employee2.getAge());</span><br></pre></td></tr></table></figure>
+<ul>
+<li>**map()**：按照指定规则, 将元素进行映射, 不是数据结构中的<code>Map</code>; 【重要】</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 字符全部大写;</span></span><br><span class="line">Stream&lt;String&gt; stream　= Stream.of(<span class="string">&quot;I&quot;</span>, <span class="string">&quot;love&quot;</span>, <span class="string">&quot;you&quot;</span>, <span class="string">&quot;too&quot;</span>);</span><br><span class="line">stream.map(str -&gt; str.toUpperCase())</span><br><span class="line">    .forEach(str -&gt; System.out.println(str));</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>flatMap()：将Stream中元素展开, 重新放到stream中, 成为新的元素; (针对多个集合组成的stream而言)</p>
+</li>
+<li><p>reduce()：规约操作/折叠操作；（一般针对stream操作的结果是值的情况）</p>
+</li>
+<li><p>collect()：stream生成集合或者Map等;</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用collect()生成Collection(接口类型)</span></span><br><span class="line">List&lt;Object&gt; list = stream.collect(Collectors.toList());</span><br><span class="line">Set&lt;Object&gt; set = stream.collect(Collectors.toSet());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用toCollection()指定具体的集合类型</span></span><br><span class="line">ArrayList&lt;Object&gt; list = stream.collect(Collectors.toCollection(ArrayList::<span class="keyword">new</span>));</span><br><span class="line">HashSet&lt;Object&gt; hashSet = stream.collect(Collectors.toCollection(HashSet::<span class="keyword">new</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 生成Map: 指定键值</span></span><br><span class="line">stream.collect(Collectors.toMap(Function.identity), student -&gt; computeGPA(student));</span><br><span class="line"><span class="comment">// 将元素区分成若干个集合,并以值的形式存入Map</span></span><br><span class="line">Map&lt;Bollean List&lt;Student&gt;&gt; map = stream.collect(Collectors.partitioningBy(s -&gt; s.getGrade() &gt;= PASS_THRESHOLD));</span><br><span class="line"><span class="comment">// 按照元素属性分组存入map</span></span><br><span class="line">Map&lt;Department, List&lt;Employee&gt;&gt; map = stream.collect(Collectors.groupingBy(Employee::getDepartment()));</span><br></pre></td></tr></table></figure>
+<ul>
+<li>collect()：连接字符串</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用Collectors.joining()拼接字符串</span></span><br><span class="line">Stream&lt;String&gt; stream = Stream.of(<span class="string">&quot;I&quot;</span>, <span class="string">&quot;love&quot;</span>, <span class="string">&quot;you&quot;</span>);</span><br><span class="line"><span class="comment">//String joined = stream.collect(Collectors.joining());// &quot;Iloveyou&quot;</span></span><br><span class="line"><span class="comment">//String joined = stream.collect(Collectors.joining(&quot;,&quot;));// &quot;I,love,you&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 传入3个参数时,分别为：分隔符,前缀，后缀;</span></span><br><span class="line">String joined = stream.collect(Collectors.joining(<span class="string">&quot;,&quot;</span>, <span class="string">&quot;&#123;&quot;</span>, <span class="string">&quot;&#125;&quot;</span>));<span class="comment">// &quot;&#123;I,love,you&#125;&quot;</span></span><br></pre></td></tr></table></figure>
 
       
 
@@ -255,7 +300,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/02/13/%E6%89%93%E5%B7%A5%E4%BA%BA%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/02/24/%E6%89%93%E5%B7%A5%E4%BA%BA%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -269,18 +314,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/02/14/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          linux学习笔记
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/02/13/article3/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">了解java多线程</div>
+    <a href="/2021/02/22/git%E5%9B%9E%E9%A1%BE/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">git版本管理工具的使用</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -308,7 +344,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="打工人的自我修养" data-title="打工人的自我修养" data-url="http://example.com/2021/02/13/%E6%89%93%E5%B7%A5%E4%BA%BA%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/"></div>
+	<div class="ds-thread" data-thread-key="打工人的自我修养" data-title="打工人的自我修养" data-url="http://example.com/2021/02/24/%E6%89%93%E5%B7%A5%E4%BA%BA%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -331,7 +367,7 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://example.com/2021/02/13/%E6%89%93%E5%B7%A5%E4%BA%BA%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/", 
+    url: "http://example.com/2021/02/24/%E6%89%93%E5%B7%A5%E4%BA%BA%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/", 
     sourceId: "打工人的自我修养",
     productKey: "true",
     target: "cloud-tie-wrapper"
