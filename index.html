@@ -181,131 +181,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-
-<h5 id="1-group-by-amp-order-by"><a href="#1-group-by-amp-order-by" class="headerlink" title="1. group by &amp; order by"></a>1. group by &amp; order by</h5><p>一起使用时，order by只能放在group by的后面, 且进行排序的字段只能是group by进行分组时字段的子集！</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from tb_xx group by id, name order by name desc limit 1;</span><br></pre></td></tr></table></figure>
-<h5 id="2-窗口函数-排序"><a href="#2-窗口函数-排序" class="headerlink" title="2. 窗口函数(排序)"></a>2. 窗口函数(排序)</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dense_rank() over (order by ...)</span><br><span class="line">rank() over (order by ...)</span><br><span class="line">row_number()...</span><br></pre></td></tr></table></figure>
-<p>【注意】</p>
-<ol>
-<li>Row-number() 当分数相同时, 排名不同; rank() &amp; dense-rank() 会出现排名相同的情况;</li>
-<li>dense-rank()  -&gt; (90,90,85) -&gt; 排名结果：(1,1,2) 排名连续;</li>
-<li>rank() -&gt; (90,90,85) -&gt; (1,1,3)  排名跳跃,不连续, 用得较多！</li>
-</ol>
-<h5 id="3-case条件判断"><a href="#3-case条件判断" class="headerlink" title="3. case条件判断"></a>3. case条件判断</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 根据查询到的b.bype不同的返回值做不同的处理;</span><br><span class="line">(case b.btype when 1 then ... when 2 then ... else ... end);</span><br></pre></td></tr></table></figure>
-<h5 id="4-mysql索引优化"><a href="#4-mysql索引优化" class="headerlink" title="4. mysql索引优化"></a>4. mysql索引优化</h5><h6 id="1-索引优化原则"><a href="#1-索引优化原则" class="headerlink" title="(1) 索引优化原则"></a>(1) 索引优化原则</h6><p>全值匹配我最爱, 最左前缀要遵守;</p>
-<p>带头大哥不能死, 中间兄弟不能断;</p>
-<p>索引类上少计算, 范围之后全失效;</p>
-<p>like百分写最左, 索引覆盖不写星;</p>
-<p>不等空值还有or, 索引失效要少用.</p>
-<h6 id="2-SQL语句的性能类型"><a href="#2-SQL语句的性能类型" class="headerlink" title="(2)SQL语句的性能类型"></a>(2)SQL语句的性能类型</h6><p>性能递减：System &gt; const &gt; eq-ref &gt; ref &gt; range &gt; index &gt; All; </p>
-<p>【注意】至少保证是Range级别的查询性能！</p>
-<ul>
-<li>System/const: 查询结果是1行记录, 可以优化为常量;</li>
-<li>eq-ref: 主键或唯一索引的部分被连接使用;</li>
-<li>ref: 不使用唯一索引, 使用普通索引或者唯一索引的部分前缀, 返回多个符合条件的行;</li>
-<li>range: 范围扫描(in,between, &gt;, &lt;, &gt;=等), 使用索引来检索给定的行;</li>
-<li>index: 扫描全表索引;</li>
-<li>All: 全表扫描, 从头到尾去查找所需要的行;</li>
-</ul>
-<h6 id="3-数据存储结构"><a href="#3-数据存储结构" class="headerlink" title="(3) 数据存储结构"></a>(3) 数据存储结构</h6><p>数据库底层是B+Tree存储数据;</p>
-<ul>
-<li>非叶子节点不存储Data, 只存储Key;</li>
-<li>叶子节点不存储指针;</li>
-<li>顺序访问指针, 提高区间访问的性能;</li>
-</ul>
-<h6 id="4-索引实践"><a href="#4-索引实践" class="headerlink" title="(4) 索引实践"></a>(4) 索引实践</h6><ol>
-<li><p>联合索引的全值匹配;</p>
-</li>
-<li><p>最左前缀原则;</p>
-</li>
-<li><p>在索引上做操作, 会导致索引失效(类型转换,计算,函数);</p>
-</li>
-<li><p>范围查询会导致后面的索引失效, 在此之前的操作可以使用索引;</p>
-</li>
-<li><p>尽量使用索引覆盖, 减少<code>select *</code>的使用;</p>
-</li>
-<li><p><code>!=</code>, <code>&gt;</code>, <code>&lt;</code> 会导致全表扫描(All), 无法使用索引;</p>
-</li>
-<li><p><code>is null</code>, <code>is not null</code>, <code>like</code> 会导致索引失效;</p>
-</li>
-</ol>
-<p>【重要】like以通配符开头情况会失效, 其余情况参照最左前缀原则;</p>
-<h6 id="5-mysql的锁机制"><a href="#5-mysql的锁机制" class="headerlink" title="(5) mysql的锁机制"></a>(5) mysql的锁机制</h6><blockquote>
-<p>innoDB支持行锁(默认)+表锁; MYISAM:表锁</p>
-</blockquote>
-<p>数据库的锁都是悲观锁(读锁和写锁)</p>
-<ul>
-<li>读锁：共享锁, 针对同一份数据, 多个操作可以同时进行, 不会影响;</li>
-<li>写锁：排他锁(独享锁), 当前写操作还未完成时，会阻塞其他写锁和读锁;</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lock table tb_xx read(write);	# 手动加表锁</span><br><span class="line">show open tables;				# 查看锁</span><br><span class="line">unlock tables;					# 删除表锁</span><br></pre></td></tr></table></figure>
-<p>行锁特点：开销大, 加锁慢, 会出现死锁，出现锁冲突的概率最低，并发度最高。</p>
-<ul>
-<li>间隙锁：1个事务中, 更新数据时, 是1个范围操作, 如<code>ID.1 and ID &lt; 20</code> 此时会对此范围内的数据加GAP锁, 即使数据不存在;</li>
-</ul>
-<h6 id="6-事务隔离级别"><a href="#6-事务隔离级别" class="headerlink" title="(6) 事务隔离级别"></a>(6) 事务隔离级别</h6><p>事务：逻辑上的一组操作,要么执行, 要么不执行;</p>
-<p>隔离级别由低到高分别为：</p>
-<ul>
-<li>Read-uncommitted: 读未提交; -&gt; <code>脏读</code></li>
-<li>read-committed: 读已提交; -&gt; <code>不可重复读</code></li>
-<li>repeatable-read (innodb默认级别): 可重复度;不会读取其他事务中的数据, -&gt; <code>幻读</code></li>
-<li>serializable: 串行化; 【将事务串行,没有并发,缺点性能差】</li>
-</ul>
-<p>【重要】幻读问题：可重复读的隔离级别时, 不会出现脏读和不可重复读的问题, 是因为其<code>select</code>查询操作不会读取其他事务中的数据(未提交/已提交), 这里查询的是数据中的<strong>快照版本</strong>, 而做数据更新<code>update</code>或者<code>insert</code>操作时, 会读取其他事务中已提交的数据！</p>
-<p>因此, 会存在<code>select * from tb_xx where id = 1</code>; 查询结果不存在; 但是插入ID为1的记录时报错, 这就是幻读！</p>
-<h5 id="5-行列互换问题"><a href="#5-行列互换问题" class="headerlink" title="5. 行列互换问题"></a>5. 行列互换问题</h5><h6 id="1-原始表"><a href="#1-原始表" class="headerlink" title="(1) 原始表"></a>(1) 原始表</h6><table>
-<thead>
-<tr>
-<th align="center">id</th>
-<th align="center">stu-id</th>
-<th align="center">name</th>
-<th align="center">course-num</th>
-<th align="center">score</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">1001</td>
-<td align="center">1</td>
-<td align="center">zhangsan</td>
-<td align="center">1</td>
-<td align="center">90</td>
-</tr>
-<tr>
-<td align="center">1002</td>
-<td align="center">1</td>
-<td align="center">zhangsan</td>
-<td align="center">2</td>
-<td align="center">90</td>
-</tr>
-<tr>
-<td align="center">1003</td>
-<td align="center">1</td>
-<td align="center">zhangsan</td>
-<td align="center">3</td>
-<td align="center">90</td>
-</tr>
-</tbody></table>
-<h6 id="2-展示"><a href="#2-展示" class="headerlink" title="(2) 展示"></a>(2) 展示</h6><table>
-<thead>
-<tr>
-<th align="center">stu-id</th>
-<th align="center">name</th>
-<th align="center">course1</th>
-<th align="center">course2</th>
-<th align="center">course3</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">1</td>
-<td align="center">zhangsan</td>
-<td align="center">90</td>
-<td align="center">90</td>
-<td align="center">90</td>
-</tr>
-</tbody></table>
-<h6 id="3-sql示例"><a href="#3-sql示例" class="headerlink" title="(3) sql示例"></a>(3) sql示例</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select </span><br><span class="line">	stu_id,name</span><br><span class="line">	max(case course_num when 1 score,else 0 end) as &quot;course1&quot;</span><br><span class="line">	max(case course_num when 2 score,else 0 end) as &quot;course2&quot;</span><br><span class="line">	max(case course_num when 3 score,else 0 end) as &quot;course3&quot;</span><br><span class="line">from tb_case group by &quot;学号&quot;;</span><br></pre></td></tr></table></figure>
-
+        <p>sql学习记录1</p>
+        
+          <a class="article-more-a" href="/2021/02/25/mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/#more">more >></a>
+        
       
 
       
@@ -1115,15 +994,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vpn</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">server</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
