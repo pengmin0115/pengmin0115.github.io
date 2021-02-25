@@ -16,7 +16,7 @@
 <meta property="og:description" content="sql学习记录1">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-02-25T04:21:09.000Z">
-<meta property="article:modified_time" content="2021-02-25T05:56:08.824Z">
+<meta property="article:modified_time" content="2021-02-25T05:57:17.368Z">
 <meta property="article:author" content="pengmin">
 <meta property="article:tag" content="sql">
 <meta name="twitter:card" content="summary">
@@ -217,20 +217,13 @@
 <li>顺序访问指针, 提高区间访问的性能;</li>
 </ul>
 <h6 id="4-索引实践"><a href="#4-索引实践" class="headerlink" title="(4) 索引实践"></a>(4) 索引实践</h6><ol>
-<li><p>联合索引的全值匹配;</p>
-</li>
-<li><p>最左前缀原则;</p>
-</li>
-<li><p>在索引上做操作, 会导致索引失效(类型转换,计算,函数);</p>
-</li>
-<li><p>范围查询会导致后面的索引失效, 在此之前的操作可以使用索引;</p>
-</li>
-<li><p>尽量使用索引覆盖, 减少<code>select *</code>的使用;</p>
-</li>
-<li><p><code>!=</code>, <code>&gt;</code>, <code>&lt;</code> 会导致全表扫描(All), 无法使用索引;</p>
-</li>
-<li><p><code>is null</code>, <code>is not null</code>, <code>like</code> 会导致索引失效;</p>
-</li>
+<li>联合索引的全值匹配;</li>
+<li>最左前缀原则;</li>
+<li>在索引上做操作, 会导致索引失效(类型转换,计算,函数);</li>
+<li>范围查询会导致后面的索引失效, 在此之前的操作可以使用索引;</li>
+<li>尽量使用索引覆盖, 减少<code>select *</code>的使用;</li>
+<li><code>!=</code>, <code>&gt;</code>, <code>&lt;</code> 会导致全表扫描(All), 无法使用索引;</li>
+<li><code>is null</code>, <code>is not null</code>, <code>like</code> 会导致索引失效;</li>
 </ol>
 <p>【重要】like以通配符开头情况会失效, 其余情况参照最左前缀原则;</p>
 <h6 id="5-mysql的锁机制"><a href="#5-mysql的锁机制" class="headerlink" title="(5) mysql的锁机制"></a>(5) mysql的锁机制</h6><blockquote>
@@ -610,15 +603,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">sql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vpn</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">server</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
