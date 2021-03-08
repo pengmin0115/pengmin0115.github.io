@@ -16,7 +16,7 @@
 <meta property="og:description" content="netty…">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-02-25T15:39:47.000Z">
-<meta property="article:modified_time" content="2021-03-04T08:59:45.248Z">
+<meta property="article:modified_time" content="2021-03-07T08:58:28.580Z">
 <meta property="article:author" content="pengmin">
 <meta property="article:tag" content="netty">
 <meta name="twitter:card" content="summary">
@@ -201,6 +201,25 @@
 
 <p><strong>(3) Selector(选择器)</strong></p>
 <p>Selector能够检测到多个注册的通道上是否有事件发生(多个Channel以事件的形式注册到1个selector上), 只有当 连接/通道真正有读写事件发生时,才会进行读写,减少了系统开销,不用去维护多个线程, 且避免了多线程之间上下文之间的切换导致的系统开销;</p>
+<h6 id="群聊Demo"><a href="#群聊Demo" class="headerlink" title="群聊Demo"></a>群聊Demo</h6><h6 id="零拷贝"><a href="#零拷贝" class="headerlink" title="零拷贝"></a>零拷贝</h6><p>文件拷贝时存在用户态和内核态的切换, 数据在OS不同介质上的拷贝; (3次切换,4次拷贝)</p>
+<ul>
+<li><p><code>mmap</code>内存映射优化</p>
+</li>
+<li><p><code>sendFile()</code></p>
+</li>
+<li><p><code>transferTo()</code>： linux下可以1次传输, windows下文件大小限制为8M, 需要分次传输; </p>
+</li>
+</ul>
+<h5 id="netty"><a href="#netty" class="headerlink" title="netty"></a>netty</h5><p>netty: 异步的, 基于事件驱动的网络应用框架;</p>
+<h6 id="Reactor模式"><a href="#Reactor模式" class="headerlink" title="Reactor模式"></a>Reactor模式</h6><blockquote>
+<p> I/O复用+线程池是reactor模式的基本设计思想;</p>
+</blockquote>
+<p>reactor模式的组成：</p>
+<ul>
+<li>reactor: 运行在单独的线程中,负责监听和分发事件;</li>
+<li>handler: 处理程序执行IO事件的业务逻辑;</li>
+</ul>
+<p>Reactor模式：单reactor单线程；单reactor多线程；主从reactor多线程；</p>
 
       
 
