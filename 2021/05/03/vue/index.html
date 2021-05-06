@@ -16,7 +16,7 @@
 <meta property="og:description" content="前端知识点学习: Vue, ElementUI, NodeJS.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-05-03T15:03:21.000Z">
-<meta property="article:modified_time" content="2021-05-05T16:55:39.236Z">
+<meta property="article:modified_time" content="2021-05-06T15:28:09.090Z">
 <meta property="article:author" content="pengmin">
 <meta property="article:tag" content="vue">
 <meta name="twitter:card" content="summary">
@@ -234,6 +234,27 @@
 <li>在项目入口文件中引入</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import Vue from <span class="string">&#x27;vue&#x27;</span></span><br><span class="line">import axios from <span class="string">&#x27;axios&#x27;</span></span><br><span class="line">import VueAxios from <span class="string">&#x27;vue-axios&#x27;</span></span><br><span class="line"></span><br><span class="line">Vue.use(axios,VueAxios);</span><br></pre></td></tr></table></figure>
+
+
+<h5 id="JS知识点记录"><a href="#JS知识点记录" class="headerlink" title="JS知识点记录"></a>JS知识点记录</h5><ol>
+<li><code>CDATA</code>的作用</li>
+</ol>
+<p>使用<code>&lt;![CDATA ...]]</code>片段来包含代码, 可以在该区域中包含不需要解析的任何格式的文本内容, 任意字符, 不会导致语法错误, 不需要处理特殊符号的转义问题. </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line">	&lt;![CDATA[</span><br><span class="line"><span class="javascript">       <span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">a, b</span>) </span>&#123;</span></span><br><span class="line">           if (a &lt; b) &#123;</span><br><span class="line">               ...</span><br><span class="line"><span class="javascript">           &#125; <span class="keyword">else</span> <span class="keyword">if</span> (a &gt; b) &#123;</span></span><br><span class="line">               ...</span><br><span class="line"><span class="javascript">           &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="javascript">               alert(<span class="string">&quot;equals&quot;</span>);</span></span><br><span class="line">           &#125;</span><br><span class="line">       &#125; </span><br><span class="line">    ]]&gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>数据类型：Undefined, Null, Boolean, Number, String, Object;</li>
+</ol>
+<p>【注意】:</p>
+<ul>
+<li><p>Undefined类型：即声明了变量, 但未初始化的时候; 该类型只有2个值，<code>undefined</code>; 特殊情况 <code>n/a</code> (not applicable, 不适用)</p>
+</li>
+<li><p>Null类型：只有1个值, <code>null</code>; 表示1个空对象指针;</p>
+</li>
+<li><p>使用<code>Boolean()</code>函数将其他类型的变量转化为布尔类型值的时候, 字符串非空即真, 数字非<code>0</code>/<code>NaN</code>即真, <code>Object</code>不为<code>nul</code>l即真,<code> Undefined</code>类型不是<code>undefined</code>即为<code>true</code>, 只能为<code>n/a</code>;</p>
+</li>
+<li><p>NaN: not a number; (特殊的数值, 用于表示本来应该返回数值的操作数未返回数值的情况)</p>
+</li>
+</ul>
 
       
 
