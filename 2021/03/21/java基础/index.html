@@ -6,18 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>打工人的自我修养 | IpromiseYou&#39;s Blog</title>
+  <title>java基础 | IpromiseYou&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="记录学习,工作过程中遇到的知识盲区, 查漏补缺.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="打工人的自我修养">
-<meta property="og:url" content="http://example.com/2021/03/21/%E6%89%93%E5%B7%A5%E4%BA%BA%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/index.html">
+<meta property="og:title" content="java基础">
+<meta property="og:url" content="http://example.com/2021/03/21/java%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="IpromiseYou&#39;s Blog">
 <meta property="og:description" content="记录学习,工作过程中遇到的知识盲区, 查漏补缺.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/diagram.png">
 <meta property="article:published_time" content="2021-03-21T08:00:00.000Z">
-<meta property="article:modified_time" content="2021-03-21T08:00:57.009Z">
+<meta property="article:modified_time" content="2021-05-11T15:29:51.784Z">
 <meta property="article:author" content="pengmin">
 <meta property="article:tag" content="tips">
 <meta name="twitter:card" content="summary">
@@ -161,21 +161,21 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-打工人的自我修养" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-java基础" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      打工人的自我修养
+      java基础
     </h1>
   
 
         
          
 
-<a href="/2021/03/21/%E6%89%93%E5%B7%A5%E4%BA%BA%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/" class="archive-article-date">
+<a href="/2021/03/21/java%E5%9F%BA%E7%A1%80/" class="archive-article-date">
   	<time datetime="2021-03-21T08:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-21</time>
 </a>
 
@@ -247,6 +247,9 @@
 <p>c.  <code>.</code>:任意字符; <code>\d</code>:数字; <code>\D</code>:非数字;<code>\s</code>:空字符串; <code>\S</code>:非空字符串; <code>\w</code>:字母数字下划线; <code>\W</code>:非字母数字下划线;</p>
 <p><code>?</code>:0次或1次; <code>+</code>:1次或多次; <code>*</code>:任意次; <code>&#123;n&#125;</code>:n次; <code>&#123;n,m&#125;</code>:n-m次; <code>&#123;n,&#125;</code>:&gt;=n次;</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    BufferedReader bufferedReader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br><span class="line">    String input;</span><br><span class="line">    <span class="keyword">while</span> ((input = bufferedReader.readLine()) != <span class="keyword">null</span> &amp;&amp; input.length() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// 匹配输入的只能是数字;</span></span><br><span class="line">        <span class="keyword">if</span> (input.matches(<span class="string">&quot;^[\\d]*$&quot;</span>)) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;number!&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;not number!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="6-Exception"><a href="#6-Exception" class="headerlink" title="(6) Exception"></a><strong>(6) Exception</strong></h6><p> 程序中抛出异常结束当前方法指的是结束当前所处的<strong>代码块</strong>！</p>
+<p>下面方法的循环体中抛出异常但是不影响后续循环的继续执行, 因为<code>catch</code>的是循环体代码块, 不是整个<code>for</code>循环.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> pengmin</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021/5/11 22:54</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExceptionTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        throwException();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">throwException</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">// 抛出异常结束当前方法是指结束当前所处的&quot;代码块&quot;;</span></span><br><span class="line">                System.out.println(<span class="string">&quot;exception method..&quot;</span>);</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">&quot;throw exception.......&quot;</span> + i);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (RuntimeException exception) &#123;</span><br><span class="line">                exception.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -316,7 +319,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/03/21/%E6%89%93%E5%B7%A5%E4%BA%BA%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/03/21/java%E5%9F%BA%E7%A1%80/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -369,7 +372,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="打工人的自我修养" data-title="打工人的自我修养" data-url="http://example.com/2021/03/21/%E6%89%93%E5%B7%A5%E4%BA%BA%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/"></div>
+	<div class="ds-thread" data-thread-key="java基础" data-title="java基础" data-url="http://example.com/2021/03/21/java%E5%9F%BA%E7%A1%80/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -392,8 +395,8 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://example.com/2021/03/21/%E6%89%93%E5%B7%A5%E4%BA%BA%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/", 
-    sourceId: "打工人的自我修养",
+    url: "http://example.com/2021/03/21/java%E5%9F%BA%E7%A1%80/", 
+    sourceId: "java基础",
     productKey: "true",
     target: "cloud-tie-wrapper"
   };
@@ -402,7 +405,7 @@
   
 
   
-  <div id="SOHUCS" sid="打工人的自我修养" ></div> 
+  <div id="SOHUCS" sid="java基础" ></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
     window.changyan.api.config({
@@ -543,11 +546,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color5">tips</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -580,10 +587,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tips</a>
               </li>
             
             <div class="clearfix"></div>
